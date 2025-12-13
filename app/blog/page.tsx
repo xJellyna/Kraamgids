@@ -19,7 +19,7 @@ const posts: Post[] = [
 
 export default function BlogPage() {
   return (
-    <main className="mx-auto max-w-3xl p-6">
+    <main className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-sm">
       <h1 className="text-3xl font-bold">Blog</h1>
       <p className="mt-3 text-gray-700">
         Duidelijke informatie en praktische tips voor (aanstaande) ouders — met
@@ -31,7 +31,7 @@ export default function BlogPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="block rounded-2xl border p-5 hover:bg-gray-50"
+            className="block rounded-3xl bg-white p-6 shadow-sm hover:shadow-md transition"
           >
             <p className="text-sm text-gray-600">{post.date}</p>
 
