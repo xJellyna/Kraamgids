@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useMemo, useState } from "react";
 
 type Post = {
   slug: string;
   title: string;
   date: string;
   excerpt: string;
+  categories: string[];
 };
 
 const posts: Post[] = [
@@ -14,54 +18,126 @@ const posts: Post[] = [
     date: "13 december 2025",
     excerpt:
       "Wanneer regel je kraamzorg, waar let je op bij je keuze en wat kun je doen als het vol zit in jouw regio?",
+    categories: ["Regelen", "Voorbereiding"],
   },
   {
-  slug: "wat-doet-een-kraamverzorger",
-  title: "Wat doet een kraamverzorger precies? (en wat kun je verwachten in de kraamweek)",
-  date: "14 december 2025",
-  excerpt:
-    "Een helder overzicht van wat kraamzorg inhoudt: zorg, begeleiding, voeding, praktische ondersteuning en waar je op kunt rekenen in de kraamweek.",
-},
-
+    slug: "wat-doet-een-kraamverzorger",
+    title:
+      "Wat doet een kraamverzorger precies? (en wat kun je verwachten in de kraamweek)",
+    date: "14 december 2025",
+    excerpt:
+      "Een helder overzicht van wat kraamzorg inhoudt: zorg, begeleiding, voeding en ondersteuning in de kraamweek.",
+    categories: ["Kraamweek", "Zorg"],
+  },
 ];
 
-export default function BlogPage() {
-  return (
-    <main className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-sm">
-      <h1 className="text-3xl font-bold">Blog</h1>
-      <p className="mt-3 text-gray-700">
-        Duidelijke informatie en praktische tips voor (aanstaande) ouders — met
-        rust en overzicht in de kraamtijd.
-      </p>
+export default function BlogOverviewPage() {
+  const [activeCategory, setActiveCategory] = useState<string>("Alles");
 
-      <div className="mt-8 space-y-4">
-        {posts.map((post) => (
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    posts.forEach((p) => p.categories.forEach((c) => set.add(c)));
+    return ["Alles", ...Array.from(set)];
+  }, []);
+
+  const filteredPosts = useMemo(() => {
+    if (activeCategory === "Alles") return posts;
+    return posts.filter((p) => p.categories.includes(activeCategory));
+  }, [activeCategory]);
+
+  return (
+    <main className="mx-auto max-w-5xl">
+      {/* INTRO */}
+      <section className="mb-6 rounded-3xl bg-white p-8 shadow-sm">
+        <h1 className="text-3xl font-bold">Blog</h1>
+        <p className="mt-3 max-w-2xl text-gray-700">
+          Duidelijke informatie en praktische tips voor (aanstaande) ouders.
+          Met rust, overzicht en aandacht voor kwaliteit in de kraamtijd.
+        </p>
+
+        {/* FILTERS */}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {categories.map((cat) => {
+            const isActive = cat === activeCategory;
+
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                className={[
+                  "rounded-full px-4 py-2 text-sm font-medium transition shadow-sm",
+                  isActive
+                    ? "text-white"
+                    : "hover:bg-white",
+                ].join(" ")}
+                style={{
+                  backgroundColor: isActive
+                    ? "var(--brand)"
+                    : "rgba(255, 246, 236, 0.9)",
+                  color: isActive ? "#fff" : "var(--brand)",
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* BLOG CARDS */}
+      <section className="grid gap-6 sm:grid-cols-2">
+        {filteredPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="block rounded-3xl bg-white p-6 shadow-sm hover:shadow-md transition"
+            className="group rounded-3xl bg-white p-6 shadow-sm transition hover:shadow-md"
           >
-            <p className="text-sm text-gray-600">{post.date}</p>
+            {/* categories on card */}
+            <div className="mb-2 flex flex-wrap gap-2">
+              {post.categories.map((category) => (
+                <span
+                  key={category}
+                  className="rounded-full px-3 py-1 text-xs font-medium"
+                  style={{
+                    backgroundColor: "rgba(255, 246, 236, 0.9)",
+                    color: "var(--brand)",
+                  }}
+                >
+                  {category}
+                </span>
+              ))}
+            </div>
 
-            <h2 className="mt-2 text-xl font-semibold">{post.title}</h2>
+            <p className="text-sm text-gray-500">{post.date}</p>
 
-            <p className="mt-2 text-sm text-gray-700">{post.excerpt}</p>
+            <h2 className="mt-2 text-xl font-semibold leading-snug group-hover:underline">
+              {post.title}
+            </h2>
 
-            <p className="mt-4 text-sm font-medium underline">Lees verder →</p>
+            <p className="mt-3 text-sm text-gray-700">{post.excerpt}</p>
+
+            <p
+              className="mt-4 text-sm font-medium"
+              style={{ color: "var(--brand)" }}
+            >
+              Lees verder →
+            </p>
           </Link>
         ))}
-      </div>
-
-      <section className="mt-12 rounded-2xl bg-gray-50 p-6">
-        <h2 className="text-xl font-semibold">Mis je een onderwerp?</h2>
-        <p className="mt-2 text-sm text-gray-700">
-          Heb je een vraag over kraamzorg of de kraamtijd? Laat het weten — dan
-          schrijven we er graag over.
-        </p>
-        <Link href="/contact" className="mt-4 inline-block text-sm underline">
-          Neem contact op
-        </Link>
       </section>
+
+      {/* EMPTY STATE */}
+      {filteredPosts.length === 0 && (
+        <section className="mt-8 rounded-3xl bg-white p-8 shadow-sm">
+          <p className="text-gray-700">
+            Geen artikelen gevonden voor <strong>{activeCategory}</strong>.
+          </p>
+        </section>
+      )}
     </main>
   );
 }
+
+
+

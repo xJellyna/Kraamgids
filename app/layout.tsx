@@ -35,7 +35,8 @@ export default function RootLayout({
             <nav className="flex items-center justify-between">
               <Link
                 href="/"
-                className="text-xl font-semibold text-[#5B3A82]"
+                className="text-xl font-semibold"
+                style={{ color: "var(--brand)" }}
               >
                 Kraamgids
               </Link>
@@ -47,27 +48,26 @@ export default function RootLayout({
                 <Link href="/vinden" className="text-sm brand-link">
                   Kraamzorg vinden
                 </Link>
-                <Link
-                  href="/voor-kraamverzorgers"
-                  className="brand-button"
-                >
+                <Link href="/voor-kraamverzorgers" className="brand-button">
                   Voor kraamverzorgers
                 </Link>
               </div>
             </nav>
 
             {/* subtiele scheidingslijn */}
-            <div className="mt-5 h-px w-full bg-[#5B3A82]/15" />
+            <div
+              className="mt-5 h-px w-full"
+              style={{ backgroundColor: "color-mix(in srgb, var(--brand) 20%, transparent)" }}
+            />
           </div>
         </header>
 
         {/* CONTENT */}
-        <div className="mx-auto max-w-6xl px-6 py-10">
-          {children}
-        </div>
+        <div className="mx-auto max-w-6xl px-6 py-10">{children}</div>
       </body>
     </html>
   );
 }
+
 
 
