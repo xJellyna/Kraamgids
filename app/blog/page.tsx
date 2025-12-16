@@ -15,6 +15,14 @@ const posts: Post[] = [
     excerpt:
       "Wanneer regel je kraamzorg, waar let je op bij je keuze en wat kun je doen als het vol zit in jouw regio?",
   },
+  {
+  slug: "wat-doet-een-kraamverzorger",
+  title: "Wat doet een kraamverzorger precies? (en wat kun je verwachten in de kraamweek)",
+  date: "14 december 2025",
+  excerpt:
+    "Een helder overzicht van wat kraamzorg inhoudt: zorg, begeleiding, voeding, praktische ondersteuning en waar je op kunt rekenen in de kraamweek.",
+},
+
 ];
 
 export default function BlogPage() {
