@@ -1,39 +1,54 @@
 import BlogPostLayout from "@/components/BlogPostLayout";
-import Link from "next/link";
 
-export default function WatDoetEenKraamverzorgerPost() {
+export default function WatDoetEenKraamverzorger() {
   return (
     <BlogPostLayout
-      title="Wat doet een kraamverzorger precies? (en wat kun je verwachten in de kraamweek)"
-      date="14 december 2025"
+      title="Wat doet een kraamverzorger precies?"
+      date="15 december 2025"
+      intro="Een kraamverzorger is er voor veel meer dan alleen praktische zorg. In dit artikel leggen we rustig uit wat je kunt verwachten tijdens de kraamweek — voor jou, je baby en je gezin."
+      related={[
+        {
+          title: "Kraamzorg regelen: wanneer begin je en waar let je op?",
+          slug: "kraamzorg-regelen",
+        },
+      ]}
     >
       <p>
-        Kraamzorg is er om jou en je baby te ondersteunen in de eerste dagen na de bevalling. Toch is het niet altijd duidelijk wat een kraamverzorger precies doet.
+        Tijdens de kraamweek komt er veel op je af. Een kraamverzorger ondersteunt
+        jullie in deze bijzondere periode, zodat je met vertrouwen kunt wennen
+        aan het nieuwe gezinssituatie.
       </p>
 
-
-      <h2>Wat kun je verwachten?</h2>
-      <ul>
-        <li>• Ondersteuning bij zorg voor moeder en baby</li>
-        <li>• Praktische hulp die rust en hygiëne ondersteunt</li>
-        <li>• Begeleiding bij borstvoeding of flesvoeding</li>
-        <li>• Uitleg en vertrouwen voor jou en je partner</li>
-        <li>• Signaleren en afstemmen met de verloskundige bij twijfel</li>
-      </ul>
-
-      <h2>Tot slot</h2>
+      <h2>Dagelijkse zorg voor moeder en baby</h2>
       <p>
-        Kraamzorg is er voor een goede start: ondersteuning, uitleg en rust in huis.
-        Kraamgids helpt je op weg naar kraamzorg die bij jullie past.
+        De kraamverzorger houdt de gezondheid van moeder en baby in de gaten.
+        Denk aan controles, hygiëne, voeding en het signaleren van bijzonderheden.
+      </p>
+
+      <h2>Ondersteuning bij voeding</h2>
+      <p>
+        Of je nu borstvoeding of flesvoeding geeft: een kraamverzorger begeleidt,
+        observeert en helpt bij vragen of onzekerheden.
+      </p>
+
+      <h2>Praktische hulp in huis</h2>
+      <p>
+        Naast zorg helpt een kraamverzorger ook met lichte huishoudelijke taken,
+        zodat jij kunt focussen op herstel en het leren kennen van je baby.
+      </p>
+
+      <h2>Begeleiding en rust</h2>
+      <p>
+        Misschien wel het belangrijkste: een kraamverzorger brengt rust,
+        structuur en vertrouwen in een intense week.
       </p>
 
       <p>
-        Lees ook:{" "}
-        <Link className="underline" href="/blog/kraamzorg-regelen">
-          Kraamzorg regelen: wanneer begin je en waar let je op?
-        </Link>
+        Iedere kraamverzorger werkt net iets anders. Daarom is het belangrijk
+        iemand te vinden die past bij jullie wensen en situatie.
       </p>
     </BlogPostLayout>
   );
 }
+
 

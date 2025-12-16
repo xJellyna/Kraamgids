@@ -24,7 +24,7 @@ const posts: Post[] = [
     slug: "wat-doet-een-kraamverzorger",
     title:
       "Wat doet een kraamverzorger precies? (en wat kun je verwachten in de kraamweek)",
-    date: "14 december 2025",
+    date: "17 december 2025",
     excerpt:
       "Een helder overzicht van wat kraamzorg inhoudt: zorg, begeleiding, voeding en ondersteuning in de kraamweek.",
     categories: ["Kraamweek", "Zorg"],

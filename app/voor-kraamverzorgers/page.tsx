@@ -15,7 +15,7 @@ export default function VoorKraamverzorgersPage() {
         </h1>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-700">
-          Kraamgids is een rustig, overzichtelijk platform waar (aanstaande) ouders
+          Kraamgids is een betrouwbaar, overzichtelijk platform waar (aanstaande) ouders
           betrouwbare kraamzorg kunnen vinden. Geen ruis — wél de juiste match.
         </p>
 
@@ -87,7 +87,7 @@ export default function VoorKraamverzorgersPage() {
             </div>
 
             <p className="mt-3 text-sm text-gray-700">
-              Je kunt de prijs later eenvoudig aanpassen. Voor nu is dit een placeholder.
+              
             </p>
 
             <a href="#aanmelden" className="mt-5 inline-block brand-button">
@@ -95,8 +95,7 @@ export default function VoorKraamverzorgersPage() {
             </a>
 
             <p className="mt-3 text-xs text-gray-500">
-              Tip: je kunt ook starten met “Founding members” (bijv. tijdelijk gratis of korting)
-              om het aanbod snel op te bouwen.
+              Info
             </p>
           </div>
         </div>
